@@ -5,7 +5,13 @@
 
 auto main(int argc, char** argv) -> int32_t
 {
-   auto discreteOutput = OWEN::DiscreteOutputMU110{argv[1], 115200, 17};
+   auto communicationOptions = OWEN::DiscreteOutputMU110::CommunicationOptions{};
+   communicationOptions.PortPath(argv[1])
+                       .BaudeRate(OWEN::DiscreteOutputMU110::CommunicationOptions::eBaudrate::_115200bps)
+                       .Parity(OWEN::DiscreteOutputMU110::CommunicationOptions::eParity::NO)
+                       .DataBits(true)
+                       .BaseAddr(17);
+   auto discreteOutput = OWEN::DiscreteOutputMU110{communicationOptions};
 //   auto const communicationOptions = discreteOutput.GetCommunicationOptions();
 //   if (communicationOptions.has_value())
 //   {
