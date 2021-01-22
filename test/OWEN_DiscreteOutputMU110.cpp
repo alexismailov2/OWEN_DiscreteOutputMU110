@@ -9,6 +9,7 @@ auto main(int argc, char** argv) -> int32_t
    communicationOptions.PortPath(argv[1])
                        .BaudeRate(OWEN::DiscreteOutputMU110::CommunicationOptions::eBaudrate::_115200bps)
                        .Parity(OWEN::DiscreteOutputMU110::CommunicationOptions::eParity::NO)
+                       .StopBits(false)
                        .DataBits(true)
                        .BaseAddr(17);
    auto discreteOutput = OWEN::DiscreteOutputMU110{communicationOptions};
